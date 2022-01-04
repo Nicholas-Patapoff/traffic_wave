@@ -24,23 +24,26 @@ green = (0, 255, 0)
 #         print(str(cars[i].acceleration) + ' accel')
 
 first_vehicle = algo.first_car(6, 60, 5000)
-following_vehicle = algo.car(6, 0, 0, 0, 0, 900, 80, 2, 0.1, 8, 16)
+following_vehicle2 = algo.car(6, 0, 0, 0, 400, 900, 80, 2, 0.1, 8, 16)
+following_vehicle1 = algo.car(6, 0, 0, 0, 0, 900, 80, 2, 0.1, 8, 16)
 
-vehicles = [first_vehicle, following_vehicle]
+vehicles = [first_vehicle, following_vehicle2, following_vehicle1]
 
 
 def main_method():
     for step in range(9000):
         for i in range(len(vehicles) - 1, 0, -1):
             print(step)
-            algo.desired_dist(vehicles[i], vehicles[ i - 1])
+            algo.desired_dist(vehicles[i], vehicles[i - 1])
             algo.IDM_accel(vehicles[i], vehicles[i - 1])
             algo.moving(vehicles, 0.1)
-            roads_use.draw_box(vehicles[i].current_location / 100, red)
-            roads_use.draw_box(vehicles[i - 1].current_location / 100, green)
+            roads_use.draw_box(vehicles[0].current_location / 100, green)
+            for x in range(len(vehicles) - 1, 0, -1):
+                roads_use.draw_box(vehicles[x].current_location / 100, red)
             pygame.display.update()
-            roads_use.delete_box(vehicles[i].current_location / 100)
-            roads_use.delete_box(vehicles[i - 1].current_location / 100)
+            roads_use.delete_box(vehicles[0].current_location / 100)
+            for x in range(len(vehicles) - 1, 0, -1):
+                roads_use.delete_box(vehicles[x].current_location / 100)
 
 
 main_method()
