@@ -4,6 +4,7 @@ import roads_use
 import car_methods_repulsion as repulse
 import time
 import car_methods as algo
+import data_export_method as exports
 
 red = (255, 0, 0)
 green = (0, 255, 0)
@@ -23,15 +24,14 @@ green = (0, 255, 0)
 #         repulse.accel_calc(cars[i], cars[i - 1])
 #         print(str(cars[i].acceleration) + ' accel')
 
-first_vehicle = algo.first_car(6, 60, 5000)
+first_vehicle = algo.first_car(6, 0, 10000)
 following_vehicle2 = algo.car(6, 0, 0, 0, 400, 900, 80, 2, 0.1, 8, 16)
 following_vehicle1 = algo.car(6, 0, 0, 0, 0, 900, 80, 2, 0.1, 8, 16)
-
 vehicles = [first_vehicle, following_vehicle2, following_vehicle1]
 
 
 def main_method():
-    for step in range(9000):
+    for step in range(6000):
         for i in range(len(vehicles) - 1, 0, -1):
             print(step)
             algo.desired_dist(vehicles[i], vehicles[i - 1])
@@ -44,6 +44,8 @@ def main_method():
             roads_use.delete_box(vehicles[0].current_location / 100)
             for x in range(len(vehicles) - 1, 0, -1):
                 roads_use.delete_box(vehicles[x].current_location / 100)
+        exports.export(vehicles, step)
+
 
 
 main_method()

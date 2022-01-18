@@ -2,7 +2,6 @@ import time
 import math
 import numpy as n
 
-
 class first_car:
     def __init__(self, car_length, car_speed, current_location):
         self.car_length = car_length
@@ -72,3 +71,4 @@ def actual_distances(leader, follower):
 
 def difference_in_speed(leader_class, follower_data):
     return math.fabs(leader_class.current_speed - follower_data)
+
