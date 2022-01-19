@@ -16,8 +16,7 @@ vehicles = [first_vehicle, following_vehicle2, following_vehicle1]
 
 def main_method():
     for step in range(2000):  # each step is for calculations
-        for i in range(len(vehicles) - 1, 0, -1):  # iterates through list of init. vehicles
-            print(step)
+        for i in range(len(vehicles) - 1, 0, -1):  # iterates through list of init. vehicles from last to first
             algo.desired_dist(vehicles[i], vehicles[i - 1])  # updates desired distances in the classes of the cars
             algo.IDM_accel(vehicles[i], vehicles[i - 1])  # updates new accel based on the previously found desired dist
             algo.moving(vehicles, 0.1)  # moves the vehicles into new locations based on accel, velocity, and step size
@@ -29,10 +28,10 @@ def main_method():
             roads_use.delete_box(vehicles[0].current_location / draw_scale, box_scale)  # deletes front car
             for x in range(len(vehicles) - 1, 0, -1):  # deletes back cars
                 roads_use.delete_box(vehicles[x].current_location / draw_scale, box_scale)
-        exports.export(vehicles, step)  # exports location, vel, accel, time stamp loc into .csv
+        exports.export_data(step, vehicles)  # exports location, vel, accel, time stamp loc into .txt
 
 
 main_method()
 roads_use.pygame.quit()  # quits the window
-
+exports.test_data.close()
 

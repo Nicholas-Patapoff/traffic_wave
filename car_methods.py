@@ -40,7 +40,6 @@ def IDM_accel(vehicle, leader):  # calculates acceleration
     vehicle.acceleration = vehicle.max_accel * (
             1 - ((vehicle.current_speed / vehicle.max_speed) ** vehicle.smoothness_accel) - \
             ((vehicle.desired_dist / actual_distances(leader, vehicle)) ** 2))
-    print(str(actual_distances(leader, vehicle)) + ' current_distance')
 
 
 def desired_dist(vehicle, first_car):  # cacluates the new desired position of car based on currernt conditions
