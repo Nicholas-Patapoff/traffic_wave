@@ -1,11 +1,18 @@
 import csv
 import pandas as pd
 
+# all of this is so fucked since I'm disabled at csv
+
 
 def export(list, step):
-    with open('test_data.csv', 'a', newline='') as csvfile:
+    with open('test_data.csv', 'a', newline='') as csvfile:  # opens a new file and appends to it
         file_writer = csv.writer(csvfile, delimiter=',')
-        data = [['Velocity', []], ['accel', []], ['time_step', []], ['location', []]]
+        data = [['Velocity', []], ['accel', []], ['time_step', []], ['location', []]]  # absolute garbage, how to
+    # arrange csvs like
+    #   car step vel acce loc
+    #    1  1     x   y    z
+    #    2  1     x   y    z
+    #    3  1     x   y    z
 
         for item in list:
             data[0][1].append(item.current_speed)
