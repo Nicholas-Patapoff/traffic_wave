@@ -1,7 +1,7 @@
 import time
 import math
 import numpy as np
-
+import random
 
 class first_car:  # class for first car, seperated from the normal class due to future changes
     def __init__(self, car_length, car_speed, current_location):
@@ -35,6 +35,12 @@ class car:  # car class which will be used to identify all the starting conditio
     desired_dist = 0
     all_location_times = {}
 
+def sedan_creation(list, number, starting_location):
+
+    list.append(car(6, 0, 0, 0, starting_location, 200, 80, 2, 0.1, 16, 16))
+    for i in range(number):
+        list.append(car(6, 0, 0, 0, (200 * number - i * 200), 200, 80, 2, 0.1, 16, 16))
+    return list
 
 def IDM_accel(vehicle, leader):  # calculates acceleration
     vehicle.acceleration = vehicle.max_accel * (

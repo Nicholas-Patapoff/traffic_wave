@@ -1,5 +1,8 @@
 import pygame.display
+
+import car_methods
 import roads_use
+import user_input as user
 import car_methods as algo
 import data_export_method as exports
 draw_scale = 40  # scales how quickly cars are supposed to move across screen based on current location / x length scrn
@@ -7,13 +10,10 @@ box_scale = 10  # how many pixels for x and y axis cars are
 red = (255, 0, 0)  # color according to RGB
 green = (0, 255, 0)
 white = (255, 255, 255)
+vehicles = []
+vehicles = car_methods.sedan_creation(vehicles, 5, 30000)
 
-first_vehicle = algo.first_car(6, 60, 10000)  # leading car initialized with (length, speed, starting loc x axis screen)
-following_vehicle2 = algo.car(6, 0, 0, 0, 0, 200, 80, 2, 0.1, 8, 16)  # following vehicle at dist 0
-following_vehicle1 = algo.car(6, 0, 0, 0, 400, 200, 80, 2, 0.1, 8, 16)  # following vehicle at dist 400
-vehicles = [first_vehicle, following_vehicle2, following_vehicle1]
-
-
+print(vehicles)
 def main_method():
     for step in range(2000):  # each step is for calculations
         for i in range(len(vehicles) - 1, 0, -1):  # iterates through list of init. vehicles from last to first
