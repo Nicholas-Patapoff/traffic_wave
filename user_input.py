@@ -1,13 +1,24 @@
 import pygame as pg
 import random
+import tkinter as tk
 
-def get_user_preferences():
-    print('How many cars do you want running?')
-    how_many = input()
-    print('What kind of car - must be sedan')
-    car_type = input()
-    print('where should the starting car be?')
-    starting_location = input()
-    return [how_many, car_type, starting_location]
 
-print(random.randint(0, 10000))
+def car_settings():
+    root = tk.Tk()
+    root.title("Traffic settings")
+    root.grid()
+
+    car_amount = tk.IntVar()
+    front_max_speed = tk.IntVar()
+    front_time_stopped = tk.IntVar()
+    tk.Label(root, text='Number of cars:')
+    tk.Entry(root, bd=3, textvariable=car_amount).grid(column=1, row=0)
+    tk.Label(root, text='speed of front car').grid(column=0, row=1)
+    tk.Entry(root, bd=3, textvariable=front_max_speed).grid(column=1, row=1)
+    tk.Label(root, text='time front car is stopped').grid(column=0, row=2)
+    tk.Entry(root, bd=3, textvariable=front_time_stopped).grid(column=1, row=2)
+    tk.Button(root, text="save & quit", command=root.destroy).grid(column=1, row=4)
+
+    root.mainloop()
+    saved = [car_amount.get(), front_max_speed.get(), front_time_stopped.get()]
+    return saved

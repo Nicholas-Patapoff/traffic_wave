@@ -37,9 +37,9 @@ class car:  # car class which will be used to identify all the starting conditio
 
 def sedan_creation(list, number, starting_location):
 
-    list.append(car(6, 0, 0, 0, starting_location, 200, 80, 2, 0.1, 16, 16))
+    list.append(car(6, 0, 0, 0, starting_location, 200, 80, 2, 0.01, 16, 16))
     for i in range(number):
-        list.append(car(6, 0, 0, 0, (200 * number - i * 200), 200, 80, 2, 0.1, 16, 16))
+        list.append(car(6, 0, 0, 0, (200 * number - i * 200), 200, 80, 2, 0.01, 16, 16))
     return list
 
 def IDM_accel(vehicle, leader):  # calculates acceleration
