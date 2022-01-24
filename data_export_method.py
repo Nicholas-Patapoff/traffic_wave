@@ -1,8 +1,6 @@
 import pandas as pd
-# write the column indicators
 
-test_data = open('test_data.txt', 'a', newline='')
-
+test_data = open('experimental_data', 'a', newline='')
 test_data.write("step car vel accel location")
 
 
