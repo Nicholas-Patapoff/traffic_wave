@@ -14,6 +14,7 @@ pygame.display.set_caption('Window')  # names the window
 
 
 def draw_box(location, color, box_size):  # function for drawing a box
+    print(color)
     pygame.gfxdraw.rectangle(window, (location, 300, box_size, box_size), color)
 
 
@@ -22,10 +23,10 @@ def delete_box(location, box_size):  # function for deleting a box
 
 
 def dynamic_color(car):  # dynamic car colors based on current velocity, moves from red to green as speed increases
-    if car.current_speed < 0:
+    if car.current_speed <= 0:
         r = 255
         g = 0
-    elif car.current_speed > 255:
+    elif car.current_speed >= car.max_speed:
         r = 0
         g = 255
     else:
