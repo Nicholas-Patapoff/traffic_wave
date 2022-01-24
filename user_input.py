@@ -23,5 +23,5 @@ def car_settings():
     tk.Button(root, text="save & quit", command=root.destroy).grid(column=1, row=4)
 
     root.mainloop()
-    saved = [car_amount.get(), front_max_speed.get(), front_time_stopped.get()]
+    saved = [car_amount.get(), front_max_speed.get(), front_time_stopped.get(), time_simulation.get()]
     return saved

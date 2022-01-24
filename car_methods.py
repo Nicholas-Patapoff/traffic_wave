@@ -3,17 +3,6 @@ import math
 import numpy as np
 import random
 
-class first_car:  # class for first car, seperated from the normal class due to future changes
-    def __init__(self, car_length, car_speed, current_location):
-        self.car_length = car_length
-        self.current_speed = car_speed
-        self.current_location = current_location
-        self.back_location = self.current_location - self.car_length / 2
-        self.front_location = self.current_location + self.car_length / 2
-
-    acceleration = 0
-    all_location_times = {}
-
 
 class car:  # car class which will be used to identify all the starting conditions
     def __init__(self, car_length, starting_speed, current_speed, starting_time, current_location, min_desired_dist,
