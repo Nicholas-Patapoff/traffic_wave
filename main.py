@@ -1,4 +1,5 @@
 import pygame.display
+import time
 import car_methods
 import user_input as user
 import car_methods as algo
@@ -13,8 +14,8 @@ user_settings = user.car_settings()
 vehicles = []
 vehicles = car_methods.sedan_creation(vehicles, user_settings[0], 30000)
 
-
 def main_method():
+    starting_time = time.time()
     for step in range(2000):  # each step is for calculations
         for i in range(len(vehicles) - 1, 0, -1):  # iterates through list of init. vehicles from last to first
             algo.desired_dist(vehicles[i], vehicles[i - 1])  # updates desired distances in the classes of the cars
@@ -29,7 +30,9 @@ def main_method():
             for x in range(len(vehicles) - 1, 0, -1):  # deletes back cars
                 roads_use.delete_box(vehicles[x].current_location / draw_scale, box_scale)
         exports.export_data(step, vehicles)  # exports location, vel, accel, time stamp loc into .txt
-
+        if user_settings[2] <= (time.time() - starting_time):
+            print(time.time() - starting_time)
+            vehicles[0].current_speed = user_settings[1]
 
 main_method()
 roads_use.pygame.quit()  # quits the window
